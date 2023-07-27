@@ -248,7 +248,14 @@ const onSocketMessage = {
 
     sendMessage("StillOk");
   },
-  ok() {
+  /**
+   * @param {string} hash
+   */
+  ok(hash) {
+    if (hash) {
+      status.previousHash = status.currentHash;
+      status.currentHash = hash;
+    }
     sendMessage("Ok");
 
     if (options.overlay) {
